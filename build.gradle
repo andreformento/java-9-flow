@@ -1,0 +1,36 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'application'
+apply plugin: 'java'
+
+group = 'com.formento.search'
+version = '1'
+sourceCompatibility = 9
+mainClassName = "com.formento.java9flow.App"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile(
+            'com.google.guava:guava:24.0-jre'
+    )
+    testCompile(
+            'org.junit.jupiter:junit-jupiter-api:5.1.0',
+            'org.assertj:assertj-core:3.9.0',
+            'com.jayway.awaitility:awaitility:1.7.0'
+    )
+    testRuntime(
+            'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+    )
+}
+
+//task runApp(type: JavaExec) {
+//    main = "com.formento.java9flow.App"
+//    classpath = sourceSets.main.runtimeClasspath
+//}
