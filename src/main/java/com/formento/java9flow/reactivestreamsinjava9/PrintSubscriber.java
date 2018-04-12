@@ -1,12 +1,13 @@
 package com.formento.java9flow.reactivestreamsinjava9;
 
-import java.util.concurrent.Flow;
+import java.util.concurrent.Flow.Subscriber;
+import java.util.concurrent.Flow.Subscription;
 
-public class PrintSubscriber implements Flow.Subscriber<Integer> {
-    private Flow.Subscription subscription;
+public class PrintSubscriber implements Subscriber<Integer> {
+    private Subscription subscription;
 
     @Override
-    public void onSubscribe(Flow.Subscription subscription) {
+    public void onSubscribe(Subscription subscription) {
         this.subscription = subscription;
         subscription.request(1);
     }

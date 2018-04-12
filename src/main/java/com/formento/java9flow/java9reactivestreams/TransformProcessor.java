@@ -1,13 +1,14 @@
 package com.formento.java9flow.java9reactivestreams;
 
-import java.util.concurrent.Flow;
+import java.util.concurrent.Flow.Processor;
+import java.util.concurrent.Flow.Subscription;
 import java.util.concurrent.SubmissionPublisher;
 import java.util.function.Function;
 
-public class TransformProcessor<T, R> extends SubmissionPublisher<R> implements Flow.Processor<T, R> {
+public class TransformProcessor<T, R> extends SubmissionPublisher<R> implements Processor<T, R> {
 
     private Function<T, R> function;
-    private Flow.Subscription subscription;
+    private Subscription subscription;
 
     public TransformProcessor(Function<T, R> function) {
         super();
@@ -15,7 +16,7 @@ public class TransformProcessor<T, R> extends SubmissionPublisher<R> implements 
     }
 
     @Override
-    public void onSubscribe(Flow.Subscription subscription) {
+    public void onSubscribe(Subscription subscription) {
         this.subscription = subscription;
         subscription.request(1);
     }
